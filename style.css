@@ -1,0 +1,94 @@
+:root {
+    --primary-color: #ffcc00; /* Amarelo do tema Chopp Online */
+    --bg-color: #121212;
+    --box-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.app-name {
+    font-size: 0.9em;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.policy-box {
+    background-color: var(--box-bg);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+ul li i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    margin-top: 5px;
+    width: 20px;
+    text-align: center;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    body { padding: 10px; }
+    .policy-box { padding: 15px; }
+}

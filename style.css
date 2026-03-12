@@ -1,99 +1,65 @@
 :root {
-    /* Usando bgHover/bgTag para o destaque (Primary) e as outras para estrutura */
-    --primary-color: #34495E; /* Baseado no bgTag para um destaque sóbrio */
-    --accent-color: #2C3E50;  /* Baseado no bgHover */
-    --bg-color: #1A1D24;      /* bgBody */
-    --box-bg: #2B2F3A;        /* bgSurface */
+    /* --- SEU MAPEAMENTO DE CORES --- */
+    --bg-body: #1A1D24;       /* bgBody */
+    --bg-sidebar: #1A2533;    /* bgSidebar */
+    --bg-surface: #2B2F3A;    /* bgSurface */
+    --bg-hover: #2C3E50;      /* bgHover */
+    --bg-tag: #34495E;        /* bgTag */
     --border-color: #444957;  /* borderColor */
     
-    /* Cores de Texto */
-    --text-main: #FFFFFF;     /* textPrimary */
-    --text-muted: #BDC3C7;    /* textSecondary */
-    --text-dimmed: #7F8C8D;   /* textMuted */
+    /* --- TEXTOS --- */
+    --text-primary: #FFFFFF;      /* textPrimary */
+    --text-secondary: #BDC3C7;    /* textSecondary */
+    --text-muted: #7F8C8D;        /* textMuted */
+    
+    /* Substituindo o Amarelo pelo tom de destaque da sua paleta */
+    --accent-color: var(--bg-tag); 
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    background-color: var(--bg-body);
+    color: var(--text-secondary); /* Texto padrão levemente cinza */
     line-height: 1.6;
     margin: 0;
     padding: 20px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 header {
     text-align: center;
     padding: 40px 0;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color); /* Sai o amarelo, entra sua borda */
     margin-bottom: 30px;
 }
 
-h1 {
-    color: var(--text-main);
-    margin: 0;
-}
-
-.app-name {
-    font-size: 0.9em;
-    color: var(--text-muted); /* Usando textSecondary */
-    margin-top: 5px;
+h1, h2 {
+    color: var(--text-primary); /* Títulos em branco puro */
 }
 
 .policy-box {
-    background-color: var(--box-bg);
+    background-color: var(--bg-surface); /* Cinza médio da sua paleta */
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 30px;
-    border-left: 4px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border-left: 4px solid var(--accent-color); /* Destaque lateral com bgTag */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 h2 {
-    color: var(--text-main);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 10px;
 }
 
-ul li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-    color: var(--text-muted);
-}
-
 ul li i {
-    color: var(--primary-color);
-    margin-right: 15px;
-    margin-top: 5px;
-    width: 20px;
-    text-align: center;
+    color: var(--accent-color); /* Ícones agora usam o tom bgTag */
 }
 
 a {
-    color: #3498DB; /* Um tom de azul para links que combine com o tema dark */
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--accent-color);
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--text-main);
-    text-decoration: underline;
 }
 
 footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.8em;
-    color: var(--text-dimmed); /* textMuted */
-}
-
-/* Responsividade para celulares */
-@media (max-width: 600px) {
-    body { padding: 10px; }
-    .policy-box { padding: 15px; }
+    color: var(--text-muted);
 }

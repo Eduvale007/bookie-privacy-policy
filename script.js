@@ -8,7 +8,6 @@ const translations = {
         cloud_title: "Nas Nuvens",
         cloud_desc: "Seus resumos voando com o Bookie! Acesse de qualquer lugar, a qualquer hora.",
         
-        // Chaves das imagens do App
         previews_title: "Conheça o App",
         preview_login: "Login Seguro",
         preview_home: "Suas Notas",
@@ -26,7 +25,10 @@ const translations = {
         backup_label: "Dados de Backup:",
         backup_desc: "Seus backups ficam no seu Google Drive. Você pode excluir a pasta 'Bookie' lá.",
         support_label: "Suporte:",
-        lang_status: "Idioma: Português"
+        lang_status: "Idioma: Português",
+        
+        // Nova chave para o link do modal
+        full_privacy_link: "Ver Política de Privacidade Completa →"
     },
     'en': {
         welcome_title: "Welcome to Bookie",
@@ -37,7 +39,6 @@ const translations = {
         cloud_title: "In the Clouds",
         cloud_desc: "Your summaries flying with Bookie! Access anywhere, anytime.",
         
-        // App Preview keys
         previews_title: "App Preview",
         preview_login: "Secure Login",
         preview_home: "Your Notes",
@@ -55,7 +56,10 @@ const translations = {
         backup_label: "Backup Data:",
         backup_desc: "Your backups are in your Google Drive. You can delete the 'Bookie' folder there.",
         support_label: "Support:",
-        lang_status: "Language: English"
+        lang_status: "Language: English",
+        
+        // Nova chave para o link do modal
+        full_privacy_link: "View Full Privacy Policy →"
     },
     'es': {
         welcome_title: "Bienvenido a Bookie",
@@ -66,7 +70,6 @@ const translations = {
         cloud_title: "En las Nubes",
         cloud_desc: "¡Tus resúmenes volando con Bookie! Accede desde cualquier lugar.",
         
-        // Llaves para capturas de la App
         previews_title: "Conoce la App",
         preview_login: "Inicio Seguro",
         preview_home: "Tus Notas",
@@ -84,7 +87,10 @@ const translations = {
         backup_label: "Copia de Seguridad:",
         backup_desc: "Tus copias están en tu Google Drive. Puedes eliminar la carpeta 'Bookie' allí.",
         support_label: "Soporte:",
-        lang_status: "Idioma: Español"
+        lang_status: "Idioma: Español",
+        
+        // Nova chave para o link do modal
+        full_privacy_link: "Ver Política de Privacidad Completa →"
     }
 };
 

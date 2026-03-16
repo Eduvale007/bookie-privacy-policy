@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal | Bookie</title>
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <style>
+        :root {
+            --primary: #9b59b6;
+            --secondary: #f3e5f5;
+            --text: #4a4a4a;
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text); 
+            background-color: #fafafa; 
+            margin: 0; 
+            padding: 40px 20px; 
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+
+        .header-legal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--primary); margin: 0; font-size: 1.8rem; }
+        h2 { color: var(--primary); margin-top: 30px; font-size: 1.3rem; }
+        p { margin-bottom: 15px; text-align: justify; }
+        
+        .highlight-box {
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            margin: 20px 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            transition: 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .btn-back:hover {
+            background-color: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover, .active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        footer { 
+            margin-top: 50px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+            color: #999; 
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        code { background: #eee; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-back" id="btn-home">← Voltar para Home</a>
+    
+    <div class="header-legal">
+        <h1 id="title">Carregando...</h1>
+        <div class="langs">
+            <button onclick="setLang('pt')" id="btn-pt" class="lang-btn">PT</button>
+            <button onclick="setLang('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="setLang('es')" id="btn-es" class="lang-btn">ES</button>
+        </div>
+    </div>
+
+    <div id="content"></div>
+
+    <footer>
+        <p>&copy; 2026 Bookie Project - <strong>bookie.tec.br</strong></p>
+        <p id="update-date"></p>
+    </footer>
+</div>
+
+<script>
+    const translations = {
+        pt: {
+            title: "Política de Privacidade",
+            btn_home: "← Voltar para Home",
+            date: "Última atualização: 16 de março de 2026",
+            html: `
+                <div class="highlight-box">
+                    <strong>Resumo:</strong> O Bookie utiliza o Google Drive apenas para backup. Não vendemos seus dados e não temos acesso aos seus arquivos pessoais fora da pasta do app.
+                </div>
+                <h2>1. Coleta de Dados</h2>
+                <p>O Bookie solicita acesso ao escopo <code>drive.file</code> da Google Drive API para salvar suas notas de forma segura.</p>
+                <h2>2. Exclusão de Dados</h2>
+                <p>Você pode excluir seus dados a qualquer momento removendo a pasta 'Bookie' do seu Drive ou fazendo logout no app.</p>
+                <h2>3. Segurança</h2>
+                <p>Tratamos seus dados com o máximo carinho, utilizando criptografia e padrões de segurança da indústria.</p>
+            `
+        },
+        en: {
+            title: "Privacy Policy",
+            btn_home: "← Back to Home",
+            date: "Last updated: March 16, 2026",
+            html: `
+                <div class="highlight-box">
+                    <strong>Summary:</strong> Bookie uses Google Drive for backup purposes only. We do not sell your data and cannot access your personal files outside the app folder.
+                </div>
+                <h2>1. Data Collection</h2>
+                <p>Bookie requests access to the <code>drive.file</code> scope of the Google Drive API to save your notes securely.</p>
+                <h2>2. Data Deletion</h2>
+                <p>You can delete your data at any time by removing the 'Bookie' folder from your Drive or logging out of the app.</p>
+                <h2>3. Security</h2>
+                <p>We handle your data with the utmost care, using encryption and industry security standards.</p>
+            `
+        },
+        es: {
+            title: "Política de Privacidad",
+            btn_home: "← Volver al Inicio",
+            date: "Última actualización: 16 de marzo de 2026",
+            html: `
+                <div class="highlight-box">
+                    <strong>Resumen:</strong> Bookie utiliza Google Drive solo para copias de seguridad. No vendemos sus datos y no podemos acceder a sus archivos personales fuera de la carpeta de la aplicación.
+                </div>
+                <h2>1. Recolección de Datos</h2>
+                <p>Bookie solicita acceso al alcance <code>drive.file</code> de la Google Drive API para guardar sus notas de forma segura.</p>
+                <h2>2. Eliminación de Datos</h2>
+                <p>Puede eliminar sus datos en cualquier momento eliminando la carpeta 'Bookie' de su Drive o cerrando la sesión en la aplicación.</p>
+            `
+        }
+    };
+
+    function setLang(lang) {
+        const t = translations[lang] || translations.en;
+        document.getElementById('title').innerText = t.title;
+        document.getElementById('content').innerHTML = t.html;
+        document.getElementById('update-date').innerText = t.date;
+        document.getElementById('btn-home').innerText = t.btn_home;
+        
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+        document.documentElement.lang = lang;
+    }
+
+    // Auto-detect
+    const userLang = navigator.language.split('-')[0];
+    setLang(['pt', 'en', 'es'].includes(userLang) ? userLang : 'en');
+</script>
+
+</body>
+</html>

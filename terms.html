@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Serviço | Bookie</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 40px 20px; background-color: #f9f9f9; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        /* Layout de Duas Colunas */
+        .main-layout { display: flex; gap: 40px; align-items: flex-start; }
+        .content-column { flex: 2; }
+        .image-column { flex: 1; text-align: center; position: sticky; top: 20px; }
+        
+        .bookie-img { max-width: 100%; height: auto; border-radius: 15px; filter: drop-shadow(0 5px 15px rgba(93, 92, 222, 0.2)); }
+
+        h1 { color: #5d5cde; border-bottom: 2px solid #5d5cde; padding-bottom: 10px; margin-top: 0; }
+        h2 { color: #444; margin-top: 25px; font-size: 1.2em; }
+        p { margin-bottom: 15px; text-align: justify; }
+        .highlight { color: #5d5cde; font-weight: bold; }
+        
+        .lang-switcher { text-align: right; margin-bottom: 20px; }
+        .lang-btn { cursor: pointer; background: #fff; border: 1px solid #ddd; padding: 5px 12px; border-radius: 4px; font-size: 0.8em; margin-left: 5px; transition: 0.2s; font-weight: bold; }
+        .lang-btn:hover { border-color: #5d5cde; color: #5d5cde; }
+        .active-lang { background: #5d5cde; color: white; border-color: #5d5cde; }
+        
+        footer { margin-top: 50px; text-align: center; font-size: 0.9em; color: #777; border-top: 1px solid #eee; padding-top: 20px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; }
+
+        /* Responsividade para Celular */
+        @media (max-width: 768px) {
+            .main-layout { flex-direction: column; }
+            .image-column { order: -1; position: static; width: 100%; margin-bottom: 20px; }
+            .bookie-img { max-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switcher">
+            <button onclick="setLanguage('pt')" id="btn-pt" class="lang-btn">PT</button>
+            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="setLanguage('es')" id="btn-es" class="lang-btn">ES</button>
+        </div>
+
+        <div class="main-layout">
+            <div class="content-column">
+                <h1 id="t-h1">Termos de Serviço</h1>
+                <div id="t-content"></div>
+            </div>
+
+            <div class="image-column">
+                <img src="images/bookie-zen.png" alt="Bookie Character" class="bookie-img">
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Bookie Project - <strong>bookie.tec.br</strong></p>
+            <p id="t-footer"></p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            pt: {
+                h1: "Termos de Serviço",
+                footer: "Última atualização: 15 de março de 2026",
+                body: `
+                    <p>Bem-vindo ao <strong>Bookie</strong>. Ao utilizar nosso aplicativo de notas e backup inteligente, você concorda com os termos descritos abaixo.</p>
+                    <h2>1. Descrição do Serviço</h2>
+                    <p>O Bookie é um assistente de notas que utiliza integração com o <span class="highlight">Google Drive API</span> para realizar o backup de dados do usuário e modelos de IA para auxílio na organização.</p>
+                    <h2>2. Uso da Conta Google</h2>
+                    <p>O Bookie terá acesso apenas aos arquivos que ele mesmo criar (escopo <code>drive.file</code>), garantindo que seus outros documentos permaneçam privados.</p>
+                    <h2>3. Responsabilidade</h2>
+                    <p>Como o Bookie está em fase de <span class="highlight">desenvolvimento acadêmico</span>, o serviço é fornecido para fins de estudo e produtividade pessoal.</p>
+                `
+            },
+            en: {
+                h1: "Terms of Service",
+                footer: "Last updated: March 15, 2026",
+                body: `
+                    <p>Welcome to <strong>Bookie</strong>. By using our smart notes and backup application, you agree to the terms described below.</p>
+                    <h2>1. Service Description</h2>
+                    <p>Bookie is a note-taking assistant that uses <span class="highlight">Google Drive API</span> to perform user data backup and AI models for organizational help.</p>
+                    <h2>2. Google Account Usage</h2>
+                    <p>Bookie will only have access to the files it creates (<code>drive.file</code> scope), ensuring your other documents remain private.</p>
+                    <h2>3. Responsibility</h2>
+                    <p>As Bookie is in an <span class="highlight">academic development</span> phase, the service is provided for study and personal productivity purposes.</p>
+                `
+            },
+            es: {
+                h1: "Términos de Servicio",
+                footer: "Última actualización: 15 de marzo de 2026",
+                body: `
+                    <p>Bienvenido a <strong>Bookie</strong>. Al utilizar nuestra aplicación de notas y copia de seguridad inteligente, usted acepta los términos descritos a continuación.</p>
+                    <h2>1. Descripción del Servicio</h2>
+                    <p>Bookie es un asistente de notas que utiliza la <span class="highlight">Google Drive API</span> para copias de seguridad de datos y modelos de IA.</p>
+                    <h2>2. Uso de la Cuenta de Google</h2>
+                    <p>Bookie solo tendrá acceso a los archivos que él mismo cree (alcance <code>drive.file</code>), garantizando que sus otros documentos sigan siendo privados.</p>
+                    <h2>3. Responsabilidad</h2>
+                    <p>Como Bookie se encuentra en fase de <span class="highlight">desarrollo académico</span>, el servicio se proporciona para fines de estudio y productividad.</p>
+                `
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang] || translations['en'];
+            document.getElementById('t-h1').innerText = t.h1;
+            document.getElementById('t-content').innerHTML = t.body;
+            document.getElementById('t-footer').innerText = t.footer;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active-lang'));
+            document.getElementById('btn-' + lang).classList.add('active-lang');
+        }
+
+        const userLang = navigator.language.split('-')[0];
+        setLanguage(['pt', 'en', 'es'].includes(userLang) ? userLang : 'en');
+    </script>
+</body>
+</html>

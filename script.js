@@ -7,6 +7,14 @@ const translations = {
         security_desc: "Seus resumos estão protegidos contra invasores com biometria e pins mágicos.",
         cloud_title: "Nas Nuvens",
         cloud_desc: "Seus resumos voando com o Bookie! Acesse de qualquer lugar, a qualquer hora.",
+        
+        // Chaves das imagens do App
+        previews_title: "Conheça o App",
+        preview_login: "Login Seguro",
+        preview_home: "Suas Notas",
+        preview_backup: "Backup Mágico",
+        preview_menu: "Menu Mágico",
+
         privacy_title: "Nossa Política de Privacidade",
         privacy_desc: "Cuidamos dos seus dados como cuidamos das nossas poções mais raras.",
         privacy_btn: "Ler detalhes",
@@ -28,6 +36,14 @@ const translations = {
         security_desc: "Your summaries are protected against intruders with biometrics and magic pins.",
         cloud_title: "In the Clouds",
         cloud_desc: "Your summaries flying with Bookie! Access anywhere, anytime.",
+        
+        // App Preview keys
+        previews_title: "App Preview",
+        preview_login: "Secure Login",
+        preview_home: "Your Notes",
+        preview_backup: "Magic Backup",
+        preview_menu: "Magic Menu",
+
         privacy_title: "Our Privacy Policy",
         privacy_desc: "We care for your data like we care for our rarest potions.",
         privacy_btn: "Read details",
@@ -49,8 +65,16 @@ const translations = {
         security_desc: "Tus resúmenes están protegidos contra intrusos con biometría y pines mágicos.",
         cloud_title: "En las Nubes",
         cloud_desc: "¡Tus resúmenes volando con Bookie! Accede desde cualquier lugar.",
+        
+        // Llaves para capturas de la App
+        previews_title: "Conoce la App",
+        preview_login: "Inicio Seguro",
+        preview_home: "Tus Notas",
+        preview_backup: "Respaldo Mágico",
+        preview_menu: "Menú Mágico",
+
         privacy_title: "Política de Privacidad",
-        privacy_desc: "Cuidamos tus datos como cuidamos nossas pociones más raras.",
+        privacy_desc: "Cuidamos tus datos como cuidamos nuestras pociones más raras.",
         privacy_btn: "Leer detalles",
         policy_lang: "Español",
         flag: "🇪🇸",
@@ -63,6 +87,7 @@ const translations = {
         lang_status: "Idioma: Español"
     }
 };
+
 
 function applyLanguage() {
     let lang = navigator.language.split('-')[0]; 

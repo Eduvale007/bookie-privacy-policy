@@ -25,9 +25,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    /* Apenas transições suaves que não tremem no scroll */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    /* Melhora a performance de renderização */
     will-change: transform;
     backface-visibility: hidden;
 }
@@ -50,7 +48,6 @@ header {
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     border-radius: 8px;
-    /* Transição suave para redimensionamento no mobile */
     transition: height 0.2s ease-out;
 }
 
@@ -74,7 +71,7 @@ header {
 .container-flex {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centraliza o conteúdo geral */
     gap: 40px;
     padding: 80px 20px;
     max-width: 1200px;
@@ -83,12 +80,22 @@ header {
 
 .container-flex.reverse { flex-direction: row-reverse; }
 
-.text-content { flex: 1; text-align: left; }
+.text-content { 
+    flex: 1; 
+    text-align: left; 
+    max-width: 600px; /* Limita a largura para o alinhamento ficar nítido */
+}
 
 section h1, section h2 { text-align: center; margin-bottom: 20px; }
 
-.hero .text-content h1, .hero .text-content p,
-.privacy .text-content h2, .privacy .text-content p { text-align: left; }
+/* Correção de Alinhamento: Mantém os títulos alinhados à esquerda dentro do container flex */
+.hero .text-content h1, 
+.hero .text-content p,
+.privacy .text-content h2, 
+.privacy .text-content p { 
+    text-align: left; 
+    margin-left: 0; 
+}
 
 /* --- Mascote --- */
 .mascot-container {
@@ -168,7 +175,63 @@ section h1, section h2 { text-align: center; margin-bottom: 20px; }
     transform: scale(1.05);
 }
 
-/* --- Modal & Policy Box (Correção Mobile) --- */
+/* --- App Previews (Carrossel Infinito) --- */
+.app-previews {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--white);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efeito de Fade nas bordas */
+.app-previews::before, .app-previews::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.app-previews::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+.app-previews::after { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+
+.screenshots-container {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    padding: 20px 0;
+    animation: scroll-infinito 30s linear infinite;
+    will-change: transform;
+}
+
+.screenshots-container:hover { animation-play-state: paused; }
+
+.screenshot-wrapper {
+    flex: 0 0 auto;
+    width: 210px;
+    text-align: center;
+}
+
+.app-img {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 7px solid #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    background-color: #000;
+}
+
+.screenshot-wrapper p {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* --- Modal & Policy Box --- */
 .modal {
     display: none;
     position: fixed;
@@ -191,45 +254,12 @@ section h1, section h2 { text-align: center; margin-bottom: 20px; }
     animation: slideUp 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-.policy-box { 
-    padding: 30px; 
-    text-align: left; 
-}
-
-.policy-box h2 { 
-    text-align: left; 
-    color: var(--primary); 
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-
+.policy-box { padding: 30px; text-align: left; }
+.policy-box h2 { color: var(--primary); font-size: 1.4rem; margin-bottom: 15px; }
 .policy-box ul { list-style: none; padding: 0; margin-top: 20px; }
-
-.policy-box li {
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 15px;
-    line-height: 1.5;
-}
-
-.policy-box i { 
-    color: var(--primary); 
-    font-size: 1.2rem; 
-    min-width: 25px; 
-    margin-top: 4px;
-    text-align: center;
-}
-
-.close-btn {
-    position: absolute;
-    right: 20px; top: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #bbb;
-    z-index: 10;
-}
+.policy-box li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
+.policy-box i { color: var(--primary); font-size: 1.2rem; min-width: 25px; margin-top: 4px; text-align: center; }
+.close-btn { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; color: #bbb; z-index: 10; }
 
 /* --- Animações --- */
 @keyframes float {
@@ -240,6 +270,11 @@ section h1, section h2 { text-align: center; margin-bottom: 20px; }
 @keyframes slideUp {
     from { transform: translateY(100px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scroll-infinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 15px)); }
 }
 
 /* --- Responsividade & Correção de Bugs --- */
@@ -270,20 +305,14 @@ section h1, section h2 { text-align: center; margin-bottom: 20px; }
     header {
         padding: 10px 15px;
         gap: 10px;
-        position: fixed; /* Fixed costuma ser mais estável que sticky no mobile */
+        position: fixed; 
         width: 100%;
         box-sizing: border-box;
     }
 
     .logo-img { height: 35px; }
     .logo-text { font-size: 1.2rem; }
-    
-    .badge {
-        font-size: 0.75rem;
-        padding: 6px 12px;
-    }
-    
-    /* Compensação para o header fixed não cobrir o topo da página */
+    .badge { font-size: 0.75rem; padding: 6px 12px; }
     body { padding-top: 60px; }
 }
 
